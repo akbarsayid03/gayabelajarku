@@ -1,12 +1,9 @@
-Saya akan melanjutkan kode dengan memasukkan semua soal yang Anda berikan. Berikut kode lengkapnya:
-
-```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AKSI Belajar - Analisis Gaya Belajar</title>
+    <title>Gaya Belajarku - Analisis Gaya Belajar</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -402,40 +399,6 @@ Saya akan melanjutkan kode dengan memasukkan semua soal yang Anda berikan. Berik
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
         }
 
-        .qr-container canvas {
-            border-radius: 12px;
-        }
-
-        .loading {
-            text-align: center;
-            padding: 40px;
-        }
-
-        .loading .spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid #f3f3f3;
-            border-top: 5px solid #667eea;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        .emoji-big {
-            font-size: 48px;
-            display: block;
-            margin-bottom: 10px;
-        }
-
         .footer {
             text-align: center;
             margin-top: 30px;
@@ -561,8 +524,18 @@ Saya akan melanjutkan kode dengan memasukkan semua soal yang Anda berikan. Berik
     </div>
 
     <script>
-        // Data Soal Lengkap
+        // Data Soal Lengkap - 30 Soal
         const soalData = [
             // Kategori 1: Lingkungan dan Latar Belakang Belajar (Soal 1-10)
+            // Skoring: A=Visual, B=Auditori, C=Kinestetik
             {
-                kategori:
+                kategori: "Lingkungan dan Latar Belakang Belajar",
+                soal: "Ketika belajar di rumah, saya biasanya lebih mudah memahami pelajaran jika...",
+                pilihan: [
+                    { teks: "Membaca buku, melihat gambar, atau membuat catatan berwarna.", nilai: "visual", icon: "👁" },
+                    { teks: "Mendengarkan penjelasan dari orang tua, guru, atau video pembelajaran.", nilai: "auditori", icon: "👂" },
+                    { teks: "Langsung mencoba mengerjakan atau mempraktikkan materi.", nilai: "kinestetik", icon: "🖐" }
+                ]
+            },
+            {
+                kategori: "
