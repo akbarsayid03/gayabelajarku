@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaya Belajarku - Premium Glassmorphism Edition</title>
+    <title>Gaya Belajarku - PPG Universitas Muhammadiyah Jember</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Plus Jakarta Sans -->
@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Chart.js & Plugin DataLabels untuk memunculkan persentase di dalam diagram -->
+    <!-- Chart.js & Plugin DataLabels -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
     <script>
@@ -30,6 +30,15 @@
                             600: '#1d4ed8',
                             700: '#1e40af',
                         }
+                    },
+                    animation: {
+                        'bounce-slow': 'bounce-slow 3s infinite',
+                    },
+                    keyframes: {
+                        'bounce-slow': {
+                            '0%, 100%': { transform: 'translateY(0) rotate(-15deg)' },
+                            '50%': { transform: 'translateY(-4px) rotate(-12deg)' },
+                        }
                     }
                 }
             }
@@ -38,12 +47,10 @@
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            /* Kombinasi warna modern: Deep Royal Blue, Electric Blue, dan Soft Purple */
             background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 40%, #311084 100%);
             background-attachment: fixed;
             min-height: 100vh;
         }
-        /* Efek Glassmorphism Premium */
         .premium-glass {
             background: rgba(255, 255, 255, 0.45);
             backdrop-filter: blur(25px) saturate(180%);
@@ -51,7 +58,6 @@
             border: 1px solid rgba(255, 255, 255, 0.4);
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
         }
-        /* Efek Glass untuk Form Input (Lebih Gelap/Terang Tergantung Fokus) */
         .glass-input {
             background: rgba(255, 255, 255, 0.6);
             border: 1px solid rgba(255, 255, 255, 0.5);
@@ -65,6 +71,10 @@
         .transition-all-300 {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
+        /* Custom slow floating animation for the cap */
+        .animate-bounce-slow {
+            animation: bounce-slow 3s ease-in-out infinite;
+        }
         @media print {
             body { background: white !important; color: black !important; }
             .no-print { display: none !important; }
@@ -77,45 +87,62 @@
 
     <div class="max-w-3xl w-full mx-auto">
         
-        <!-- ================= HALAMAN AWAL (ULTRA SIMPEL & GLASSMORPHISM) ================= -->
-        <section id="welcome-screen" class="premium-glass rounded-3xl p-8 md:p-12 transition-all-300 text-center space-y-8 no-print">
-            <div class="space-y-3">
-                <div class="inline-flex items-center gap-2 bg-white/60 px-4 py-1.5 rounded-full text-xs font-bold text-modernBlue-700 tracking-wider shadow-sm">
-                    ✨ LEVEL UP YOUR STUDY
+        <!-- ================= HALAMAN AWAL (LOGO DI ATAS HURUF G & COPYRIGHT) ================= -->
+        <section id="welcome-screen" class="premium-glass rounded-3xl p-8 md:p-12 transition-all-300 text-center flex flex-col justify-between min-h-[480px] no-print">
+            <div class="space-y-6 my-auto">
+                
+                <div class="space-y-4">
+                    <!-- Badge Kecil Pendidikan -->
+                    <div class="inline-flex items-center gap-2 bg-white/60 px-4 py-1.5 rounded-full text-[10px] font-extrabold text-modernBlue-700 tracking-widest shadow-sm uppercase">
+                        📚 Kuesioner Profil Asesmen Pendidikan
+                    </div>
+                    
+                    <!-- Judul Utama dengan Ikon Kelulusan Terintegrasi di Huruf G -->
+                    <h1 class="text-4xl md:text-6xl font-black text-white tracking-tight drop-shadow relative inline-block py-2">
+                        <span class="relative inline-block">
+                            <!-- Ikon Kelulusan (Toga) hinggap presisi di atas kiri huruf G -->
+                            <i class="fa-solid fa-graduation-cap absolute -top-5 -left-4 text-2xl md:text-3xl text-yellow-300 rotate-[-15deg] drop-shadow-[0_2px_5px_rgba(0,0,0,0.3)] animate-bounce-slow"></i>
+                            G
+                        </span>aya Belajarku
+                    </h1>
+                    
+                    <p class="text-white/90 text-sm md:text-base max-w-md mx-auto leading-relaxed font-medium">
+                        Temukan metode belajar paling efektif yang dirancang khusus sesuai dengan karakteristik unik energimu.
+                    </p>
                 </div>
-                <h1 class="text-3xl md:text-4xl font-black text-white tracking-tight drop-shadow-sm">
-                    Gaya Belajarku
-                </h1>
-                <p class="text-white/90 text-sm md:text-base max-w-md mx-auto leading-relaxed">
-                    Temukan metode belajar paling efektif yang dirancang khusus sesuai dengan karakteristik unik energimu.
-                </p>
+
+                <!-- Form Minimalis -->
+                <form id="start-form" class="max-w-md mx-auto space-y-4 pt-2">
+                    <div class="space-y-3">
+                        <input type="text" id="student-name" required placeholder="Masukkan Nama Lengkap Anda" 
+                            class="w-full px-5 py-3.5 rounded-2xl glass-input text-slate-900 font-semibold placeholder-slate-500 focus:outline-none text-center text-sm md:text-base">
+                        
+                        <select id="student-class" required 
+                            class="w-full px-5 py-3.5 rounded-2xl glass-input text-slate-700 font-semibold focus:outline-none text-center appearance-none cursor-pointer text-sm md:text-base">
+                            <option value="" disabled selected>Pilih Kelas / Tingkat</option>
+                            <option value="X (10)">Kelas X (10) SMA</option>
+                            <option value="XI (11)">Kelas XI (11) SMA</option>
+                            <option value="XII (12)">Kelas XII (12) SMA</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" 
+                        class="w-full bg-white hover:bg-modernBlue-50 text-modernBlue-700 font-bold px-8 py-4 rounded-2xl shadow-lg transition-all transform hover:-translate-y-0.5 active:translate-y-0 text-sm md:text-base tracking-wide flex items-center justify-center gap-2">
+                        Mulai Tes Analisis <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </button>
+                </form>
             </div>
 
-            <!-- Form Minimalis -->
-            <form id="start-form" class="max-w-md mx-auto space-y-5 pt-2">
-                <div class="space-y-4">
-                    <input type="text" id="student-name" required placeholder="Masukkan Nama Lengkap Anda" 
-                        class="w-full px-5 py-3.5 rounded-2xl glass-input text-slate-900 font-semibold placeholder-slate-500 focus:outline-none text-center">
-                    
-                    <select id="student-class" required 
-                        class="w-full px-5 py-3.5 rounded-2xl glass-input text-slate-700 font-semibold focus:outline-none text-center appearance-none cursor-pointer">
-                        <option value="" disabled selected>Pilih Kelas / Tingkat</option>
-                        <option value="X (10)">Kelas X (10) SMA</option>
-                        <option value="XI (11)">Kelas XI (11) SMA</option>
-                        <option value="XII (12)">Kelas XII (12) SMA</option>
-                    </select>
-                </div>
-
-                <button type="submit" 
-                    class="w-full bg-white hover:bg-modernBlue-50 text-modernBlue-700 font-bold px-8 py-4 rounded-2xl shadow-lg transition-all transform hover:-translate-y-0.5 active:translate-y-0 text-base tracking-wide flex items-center justify-center gap-2">
-                    Mulai Tes Analisis <i class="fa-solid fa-chevron-right text-sm"></i>
-                </button>
-            </form>
+            <!-- Copyright Bawah Tengah Institusional -->
+            <div class="pt-8 border-t border-white/10 text-center">
+                <p class="text-[10px] md:text-xs text-white/70 font-semibold tracking-wider uppercase">
+                    © 2026 PPG Calon Guru Universitas Muhammadiyah Jember
+                </p>
+            </div>
         </section>
 
         <!-- ================= HALAMAN SOAL ================= -->
         <section id="quiz-screen" class="premium-glass rounded-3xl p-6 md:p-10 shadow-xl transition-all-300 hidden no-print">
-            <!-- Header Soal & Progress -->
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
                 <div>
                     <span id="category-badge" class="bg-white/60 text-modernBlue-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">Kategori</span>
@@ -128,19 +155,16 @@
                 </div>
             </div>
 
-            <!-- Teks Pertanyaan -->
             <div class="mb-8">
                 <h2 id="question-text" class="text-xl md:text-2xl font-bold text-white leading-snug min-h-[70px] drop-shadow-sm">
                     Memuat pertanyaan...
                 </h2>
             </div>
 
-            <!-- Pilihan Jawaban (Tanpa Emoji) -->
             <div id="options-container" class="grid grid-cols-1 gap-4 mb-8">
-                <!-- Dirender dinamis via JS -->
+                <!-- Dirender dinamis -->
             </div>
 
-            <!-- Navigasi -->
             <div class="flex items-center justify-between pt-5 border-t border-white/20">
                 <button id="btn-prev" onclick="prevQuestion()" disabled
                     class="px-5 py-2.5 rounded-xl border border-white/30 text-white/60 font-semibold text-sm transition-all flex items-center gap-2 hover:bg-white/20 disabled:opacity-30 disabled:pointer-events-none">
@@ -157,7 +181,6 @@
         <section id="result-screen" class="print-layout hidden">
             <div class="premium-glass rounded-3xl p-6 md:p-10 space-y-8 bg-white/90">
                 
-                <!-- Kop Laporan -->
                 <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-white/40 pb-6 gap-4">
                     <div>
                         <h2 class="text-2xl font-black text-modernBlue-700 tracking-tight">Gaya Belajarku 🎓</h2>
@@ -172,7 +195,6 @@
                     </div>
                 </div>
 
-                <!-- Banner Karakteristik Dominan -->
                 <div class="bg-gradient-to-r from-modernBlue-600 to-blue-700 text-white rounded-2xl p-6 md:p-8 shadow-md">
                     <div class="space-y-2">
                         <span class="text-xs font-bold uppercase tracking-widest bg-white/20 px-3 py-1 rounded-full">Karakteristik Dominan</span>
@@ -183,7 +205,6 @@
                     </div>
                 </div>
 
-                <!-- Visualisasi Grafik Lingkaran Berserta Persentase -->
                 <div class="space-y-6 py-4">
                     <h3 class="text-sm font-bold text-slate-700 uppercase tracking-wider text-center flex items-center justify-center gap-2">
                         <i class="fa-solid fa-chart-pie text-modernBlue-600"></i> Komposisi Persentase Gaya Belajar
@@ -199,7 +220,6 @@
                     </div>
                 </div>
 
-                <!-- Analisis Mendalam -->
                 <div class="space-y-6 pt-6 border-t border-white/40">
                     <h3 class="text-sm font-bold text-slate-700 uppercase tracking-wider flex items-center gap-2">
                         <i class="fa-solid fa-lightbulb text-modernBlue-600"></i> Rekomendasi & Strategi Belajar Efektif
@@ -209,14 +229,12 @@
                     </div>
                 </div>
 
-                <!-- Footer Informasi -->
                 <div class="text-center sm:text-left space-y-1 pt-6 border-t border-slate-200 text-xs text-slate-500">
                     <h4 class="font-bold text-slate-700 uppercase tracking-wider">Gaya Belajarku Assessment System</h4>
-                    <p>Hasil valid berdasarkan pemetaan profil instrumen Visual-Auditory-Kinesthetic (VAK).</p>
-                    <p class="text-[10px] text-modernBlue-600 font-bold tracking-widest uppercase">ID Kode: GB-REPORT-MODERN-2026</p>
+                    <p>Dikembangkan untuk kebutuhan riset aksi klinis kuesioner pendidikan (VAK).</p>
+                    <p class="text-[10px] text-modernBlue-600 font-bold tracking-widest uppercase">Kontributor Resmi: PPG Calon Guru Universitas Muhammadiyah Jember 2026</p>
                 </div>
 
-                <!-- Tombol Kontrol -->
                 <div class="no-print flex flex-col sm:flex-row gap-3 pt-6 border-t border-slate-200 justify-end">
                     <button onclick="restartAssessment()"
                         class="px-6 py-3 rounded-xl border border-slate-300 hover:bg-white/60 font-semibold text-slate-700 transition-all text-sm flex items-center justify-center gap-2">
@@ -252,7 +270,7 @@
             { category: "Kehidupan Sehari-hari", text: "Saat teman menceritakan film bioskop yang baru ditontonnya, Anda lebih tertarik jika...", options: { A: "Ditunjukkan cuplikan atau trailernya.", B: "Teman menceritakan alur ceritanya.", C: "Langsung menonton film tersebut sendiri." } },
             { category: "Kehidupan Sehari-hari", text: "Ketika mendengarkan lagu favorit, hal yang paling membuat Anda menikmatinya adalah...", options: { A: "Video klip atau visual penyanyinya.", B: "Melodi, lirik, atau suara penyanyinya.", C: "Bisa ikut bernyanyi, berjoget, atau memainkan gerakannya." } },
             { category: "Kehidupan Sehari-hari", text: "Jika teman mengajari Anda menggunakan fitur baru di HP, Anda lebih mudah memahami ketika...", options: { A: "Teman menunjukkan langsung di layar HP.", B: "Teman menjelaskan langkah-langkahnya sambil berbicara.", C: "Anda memegang HP sendiri dan langsung mencobanya." } },
-            { category: "Kehidupan Sehari-hari", text: "Saat libur akhir pekan tidak ada kegiatan, Anda lebih memilih...", options: { A: "Menonton film, anime, atau scrolling Pinterest dan Instagram.", B: "Mendengarkan musik, podcast, atau ngobrol di Discord/telepon dengan teman.", C: "Melakukan hobi seperti basket, futsal, gym, jalan-jalan, dll." } },
+            { category: "Kehidupan Sehari-hari", text: "Saat tidur akhir pekan tidak ada kegiatan, Anda lebih memilih...", options: { A: "Menonton film, anime, atau scrolling Pinterest dan Instagram.", B: "Mendengarkan musik, podcast, atau ngobrol di Discord/telepon dengan teman.", C: "Melakukan hobi seperti basket, futsal, gym, jalan-jalan, dll." } },
             { category: "Kehidupan Sehari-hari", text: "Ketika ingin membeli baju atau sepatu baru, biasanya apa yang pertama kali Anda lakukan...", options: { A: "Membandingkan tampilan bahan, warna, dan model baju.", B: "Bertanya kepada pegawai toko untuk mendapatkan rekomendasi yang sesuai.", C: "Langsung mencoba untuk mengetahui ukuran, bahan, dan kenyamanannya." } },
             { category: "Bahasa Indonesia", text: "Ketika guru menjelaskan pelajaran Bahasa Indonesia, saya lebih mudah memahami jika ...", options: { A: "Guru menjelaskan secara lisan dan memberikan kesempatan untuk bertanya.", B: "Guru menggunakan gambar, video, atau tulisan yang ditampilkan di layar atau papan tulis.", C: "Guru mengajak siswa melakukan kegiatan atau praktik secara langsung." } },
             { category: "Bahasa Indonesia", text: "Agar lebih tertarik mengikuti pelajaran Bahasa Indonesia, saya lebih menyukai pembelajaran yang ...", options: { A: "Banyak melibatkan diskusi dan tanya jawab.", B: "Menggunakan media pembelajaran yang menarik untuk dilihat.", C: "Melibatkan aktivitas atau permainan pembelajaran." } },
@@ -281,7 +299,6 @@
         let answers = Array(30).fill(null);
         let pieChartInstance = null;
 
-        // Registrasi Chart.js DataLabels plugin secara global
         Chart.register(ChartDataLabels);
 
         document.getElementById('start-form').addEventListener('submit', function(e) {
@@ -427,7 +444,6 @@
                     maintainAspectRatio: false,
                     plugins: {
                         legend: { position: 'bottom', labels: { font: { family: 'Plus Jakarta Sans', size: 11, weight: 'bold' } } },
-                        // Konfigurasi menampilkan persentase teks di dalam potongan
                         datalabels: {
                             color: '#ffffff',
                             font: { weight: 'bold', size: 13, family: 'Plus Jakarta Sans' },
