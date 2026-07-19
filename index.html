@@ -19,9 +19,7 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                    },
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
                     colors: {
                         modernBlue: {
                             50: '#f0f4ff',
@@ -31,9 +29,7 @@
                             700: '#1e40af',
                         }
                     },
-                    animation: {
-                        'bounce-slow': 'bounce-slow 3s infinite',
-                    },
+                    animation: { 'bounce-slow': 'bounce-slow 3s infinite' },
                     keyframes: {
                         'bounce-slow': {
                             '0%, 100%': { transform: 'translateY(0) rotate(-15deg)' },
@@ -68,13 +64,7 @@
             border-color: #2563eb;
             box-shadow: 0 0 15px rgba(37, 99, 235, 0.2);
         }
-        .transition-all-300 {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        /* Custom slow floating animation for the cap */
-        .animate-bounce-slow {
-            animation: bounce-slow 3s ease-in-out infinite;
-        }
+        .transition-all-300 { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
         @media print {
             body { background: white !important; color: black !important; }
             .no-print { display: none !important; }
@@ -87,31 +77,26 @@
 
     <div class="max-w-3xl w-full mx-auto">
         
-        <!-- ================= HALAMAN AWAL (LOGO DI ATAS HURUF G & COPYRIGHT) ================= -->
+        <!-- ================= HALAMAN AWAL ================= -->
         <section id="welcome-screen" class="premium-glass rounded-3xl p-8 md:p-12 transition-all-300 text-center flex flex-col justify-between min-h-[480px] no-print">
             <div class="space-y-6 my-auto">
-                
                 <div class="space-y-4">
-                    <!-- Badge Kecil Pendidikan -->
                     <div class="inline-flex items-center gap-2 bg-white/60 px-4 py-1.5 rounded-full text-[10px] font-extrabold text-modernBlue-700 tracking-widest shadow-sm uppercase">
                         📚 Kuesioner Profil Asesmen Pendidikan
                     </div>
                     
-                    <!-- Judul Utama dengan Ikon Kelulusan Terintegrasi di Huruf G -->
                     <h1 class="text-4xl md:text-6xl font-black text-white tracking-tight drop-shadow relative inline-block py-2">
                         <span class="relative inline-block">
-                            <!-- Ikon Kelulusan (Toga) hinggap presisi di atas kiri huruf G -->
                             <i class="fa-solid fa-graduation-cap absolute -top-5 -left-4 text-2xl md:text-3xl text-yellow-300 rotate-[-15deg] drop-shadow-[0_2px_5px_rgba(0,0,0,0.3)] animate-bounce-slow"></i>
                             G
                         </span>aya Belajarku
                     </h1>
                     
                     <p class="text-white/90 text-sm md:text-base max-w-md mx-auto leading-relaxed font-medium">
-                        Temukan metode belajar paling efektif yang dirancang khusus sesuai dengan karakteristik unik energimu.
+                        Temukan kombinasi profil latar belakang, preferensi gaya belajar alami, serta kemahiran berbahasa Anda secara akurat.
                     </p>
                 </div>
 
-                <!-- Form Minimalis -->
                 <form id="start-form" class="max-w-md mx-auto space-y-4 pt-2">
                     <div class="space-y-3">
                         <input type="text" id="student-name" required placeholder="Masukkan Nama Lengkap Anda" 
@@ -133,7 +118,6 @@
                 </form>
             </div>
 
-            <!-- Copyright Bawah Tengah Institusional -->
             <div class="pt-8 border-t border-white/10 text-center">
                 <p class="text-[10px] md:text-xs text-white/70 font-semibold tracking-wider uppercase">
                     © 2026 PPG Calon Guru Universitas Muhammadiyah Jember
@@ -162,7 +146,7 @@
             </div>
 
             <div id="options-container" class="grid grid-cols-1 gap-4 mb-8">
-                <!-- Dirender dinamis -->
+                <!-- Pilihan jawaban diisi via JS -->
             </div>
 
             <div class="flex items-center justify-between pt-5 border-t border-white/20">
@@ -181,61 +165,77 @@
         <section id="result-screen" class="print-layout hidden">
             <div class="premium-glass rounded-3xl p-6 md:p-10 space-y-8 bg-white/90">
                 
-                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-white/40 pb-6 gap-4">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-slate-300 pb-6 gap-4">
                     <div>
-                        <h2 class="text-2xl font-black text-modernBlue-700 tracking-tight">Gaya Belajarku 🎓</h2>
-                        <p class="text-xs text-slate-600 mt-1 uppercase tracking-wider font-bold">Hasil Analisis Gaya Belajar Eksklusif</p>
+                        <h2 class="text-2xl font-black text-modernBlue-700 tracking-tight">Laporan Asesmen Siswa 🎓</h2>
+                        <p class="text-xs text-slate-600 mt-1 uppercase tracking-wider font-bold">Hasil Pemetaan Komprehensif Profil Belajar</p>
                     </div>
-                    <div class="bg-white/80 p-4 rounded-2xl border border-white text-xs md:text-sm shadow-sm text-slate-800">
+                    <div class="bg-white/80 p-4 rounded-2xl border border-slate-200 text-xs md:text-sm shadow-sm text-slate-800">
                         <table class="w-full text-left">
-                            <tr><td class="font-bold pr-3 text-slate-500">NAMA</td><td id="res-student-name" class="font-semibold">: -</td></tr>
-                            <tr><td class="font-bold pr-3 text-slate-500">KELAS</td><td id="res-student-class" class="font-semibold">: -</td></tr>
-                            <tr><td class="font-bold pr-3 text-slate-500">TANGGAL</td><td id="res-date" class="font-semibold">: -</td></tr>
+                            <tr><td class="font-bold pr-3 text-slate-500">NAMA</td><td id="res-student-name" class="font-semibold text-slate-800">: -</td></tr>
+                            <tr><td class="font-bold pr-3 text-slate-500">KELAS</td><td id="res-student-class" class="font-semibold text-slate-800">: -</td></tr>
+                            <tr><td class="font-bold pr-3 text-slate-500">TANGGAL</td><td id="res-date" class="font-semibold text-slate-800">: -</td></tr>
                         </table>
                     </div>
                 </div>
 
-                <div class="bg-gradient-to-r from-modernBlue-600 to-blue-700 text-white rounded-2xl p-6 md:p-8 shadow-md">
-                    <div class="space-y-2">
-                        <span class="text-xs font-bold uppercase tracking-widest bg-white/20 px-3 py-1 rounded-full">Karakteristik Dominan</span>
-                        <h3 class="text-xl md:text-2xl font-black" id="dominant-title">Menganalisis...</h3>
-                        <p class="text-sm text-blue-50 leading-relaxed max-w-2xl" id="dominant-summary">
-                            Mengolah hasil jawaban...
-                        </p>
+                <!-- BAB 1: LATAR BELAKANG -->
+                <div class="space-y-4">
+                    <h3 class="text-base font-bold text-slate-800 uppercase tracking-wider flex items-center gap-2 border-b pb-2 border-slate-200">
+                        <i class="fa-solid fa-info-circle text-modernBlue-600"></i> Bab I: Profil Latar Belakang Siswa
+                    </h3>
+                    <div id="bg-results-list" class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs text-slate-700">
+                        <!-- Diisi deskripsi opsi terpilih -->
                     </div>
                 </div>
 
-                <div class="space-y-6 py-4">
-                    <h3 class="text-sm font-bold text-slate-700 uppercase tracking-wider text-center flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-chart-pie text-modernBlue-600"></i> Komposisi Persentase Gaya Belajar
+                <!-- BAB 2: GAYA BELAJAR -->
+                <div class="space-y-6 pt-4 border-t border-slate-200">
+                    <h3 class="text-base font-bold text-slate-800 uppercase tracking-wider flex items-center gap-2 border-b pb-2 border-slate-200">
+                        <i class="fa-solid fa-brain text-modernBlue-600"></i> Bab II: Pemetaan Gaya Belajar Alami (VAK)
                     </h3>
-                    
-                    <div class="flex flex-col items-center justify-center">
-                        <div class="w-64 h-64 md:w-72 md:h-72 bg-white/50 p-4 rounded-full shadow-inner border border-white">
-                            <canvas id="pieChart"></canvas>
+                    <div class="bg-gradient-to-r from-modernBlue-600 to-blue-700 text-white rounded-2xl p-5 shadow-sm">
+                        <span class="text-[10px] font-bold uppercase tracking-widest bg-white/20 px-2.5 py-0.5 rounded-full">Kecenderungan Gaya Belajar</span>
+                        <h4 class="text-xl font-black mt-1" id="gaya-title">Menganalisis...</h4>
+                    </div>
+                    <div class="flex flex-col md:flex-row items-center justify-around gap-6 py-2">
+                        <div class="w-56 h-56 bg-white p-3 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-center">
+                            <canvas id="chartGaya"></canvas>
                         </div>
-                        <p class="text-xs text-slate-500 italic text-center max-w-md mt-6">
-                            Potongan grafik yang sedikit terpisah/menonjol keluar menunjukkan kecenderungan utama tipe belajar Anda.
-                        </p>
+                        <div class="flex-1 space-y-3 w-full" id="gaya-desc">
+                            <!-- Deskripsi Taktis -->
+                        </div>
                     </div>
                 </div>
 
-                <div class="space-y-6 pt-6 border-t border-white/40">
-                    <h3 class="text-sm font-bold text-slate-700 uppercase tracking-wider flex items-center gap-2">
-                        <i class="fa-solid fa-lightbulb text-modernBlue-600"></i> Rekomendasi & Strategi Belajar Efektif
+                <!-- BAB 3: KEMAHIRAN BAHASA INDONESIA -->
+                <div class="space-y-6 pt-4 border-t border-slate-200">
+                    <h3 class="text-base font-bold text-slate-800 uppercase tracking-wider flex items-center gap-2 border-b pb-2 border-slate-200">
+                        <i class="fa-solid fa-language text-modernBlue-600"></i> Bab III: Minat Aktivitas Kemahiran Bahasa Indonesia
                     </h3>
-                    <div class="grid grid-cols-1 gap-6" id="analysis-grid">
-                        <!-- Diisi via JavaScript -->
+                    <div class="bg-gradient-to-r from-purple-600 to-indigo-700 text-white rounded-2xl p-5 shadow-sm">
+                        <span class="text-[10px] font-bold uppercase tracking-widest bg-white/20 px-2.5 py-0.5 rounded-full">Kecenderungan Berbahasa</span>
+                        <h4 class="text-xl font-black mt-1" id="bahasa-title">Menganalisis...</h4>
+                    </div>
+                    <div class="flex flex-col md:flex-row items-center justify-around gap-6 py-2">
+                        <div class="w-56 h-56 bg-white p-3 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-center">
+                            <canvas id="chartBahasa"></canvas>
+                        </div>
+                        <div class="flex-1 space-y-3 w-full" id="bahasa-desc">
+                            <!-- Deskripsi Minat -->
+                        </div>
                     </div>
                 </div>
 
-                <div class="text-center sm:text-left space-y-1 pt-6 border-t border-slate-200 text-xs text-slate-500">
+                <!-- FOOTER & KONTRIBUTOR -->
+                <div class="text-center sm:text-left space-y-1 pt-6 border-t border-slate-300 text-[11px] text-slate-500">
                     <h4 class="font-bold text-slate-700 uppercase tracking-wider">Gaya Belajarku Assessment System</h4>
-                    <p>Dikembangkan untuk kebutuhan riset aksi klinis kuesioner pendidikan (VAK).</p>
+                    <p>Dikembangkan untuk kebutuhan instrumen aksi klinis kuesioner asesmen diagnostik kurikulum merdeka.</p>
                     <p class="text-[10px] text-modernBlue-600 font-bold tracking-widest uppercase">Kontributor Resmi: PPG Calon Guru Universitas Muhammadiyah Jember 2026</p>
                 </div>
 
-                <div class="no-print flex flex-col sm:flex-row gap-3 pt-6 border-t border-slate-200 justify-end">
+                <!-- NAVIGASI BAWAH -->
+                <div class="no-print flex flex-col sm:flex-row gap-3 pt-6 border-t border-slate-300 justify-end">
                     <button onclick="restartAssessment()"
                         class="px-6 py-3 rounded-xl border border-slate-300 hover:bg-white/60 font-semibold text-slate-700 transition-all text-sm flex items-center justify-center gap-2">
                         <i class="fa-solid fa-rotate-left"></i> Ulangi Tes
@@ -250,54 +250,50 @@
     </div>
 
     <script>
-        // DATA SET SOAL ASESMEN (30 Pertanyaan)
+        // DATA SET SELURUH SOAL (30 SOAL)
         const questions = [
-            { category: "Lingkungan Belajar", text: "Ketika belajar di rumah, saya biasanya lebih mudah memahami pelajaran jika....", options: { A: "Membaca buku, melihat gambar, atau membuat catatan berwarna.", B: "Mendengarkan penjelasan dari orang tua, guru, atau video pembelajaran.", C: "Langsung mencoba mengerjakan atau mempraktikkan materi." } },
-            { category: "Lingkungan Belajar", text: "Saat orang tua membantu saya belajar, mereka biasanya....", options: { A: "Menunjukkan contoh melalui gambar atau tulisan.", B: "Menjelaskan materi dengan berbicara.", C: "Mengajak saya mencoba atau mempraktikkan langsung." } },
-            { category: "Lingkungan Belajar", text: "Ketika mengulang pelajaran di rumah, saya lebih sering....", options: { A: "Membaca kembali catatan atau buku pelajaran.", B: "Mengulang materi dengan berbicara atau mendengarkannya.", C: "Mengerjakan latihan atau melakukan praktik." } },
-            { category: "Lingkungan Belajar", text: "Sejak di sekolah sebelumnya, cara belajar yang paling sering saya lakukan adalah....", options: { A: "Membuat rangkuman atau peta konsep.", B: "Berdiskusi atau mendengarkan penjelasan guru.", C: "Belajar melalui percobaan atau praktik." } },
-            { category: "Lingkungan Belajar", text: "Jika mengerjakan PR di rumah, saya terbantu dengan....", options: { A: "Contoh soal yang tertulis atau bergambar.", B: "Penjelasan dari orang tua atau saudara.", C: "Mencoba mengerjakan sendiri." } },
-            { category: "Lingkungan Belajar", text: "Saat mengikuti pelajaran di kelas, saya lebih sering....", options: { A: "Memperhatikan tulisan di papan atau slide yang ditampilkan guru.", B: "Fokus mendengarkan penjelasan guru.", C: "Lebih memahami saat ada kegiatan praktik atau permainan belajar." } },
-            { category: "Lingkungan Belajar", text: "Ketika memiliki waktu luang di rumah, saya lebih....", options: { A: "Membaca buku atau melihat video edukasi.", B: "Mendengarkan cerita, podcast, atau penjelasan.", C: "Membuat karya, bermain edukatif, atau mencoba sesuatu." } },
-            { category: "Lingkungan Belajar", text: "Di rumah, saya lebih sering belajar....", options: { A: "Di tempat yang rapi dan penuh buku atau catatan.", B: "Sambil mendengarkan penjelasan atau membaca dengan suara pelan.", C: "Sambil bergerak atau sesekali berpindah tempat." } },
-            { category: "Lingkungan Belajar", text: "Kegiatan yang paling sering saya lakukan untuk mengingat pelajaran adalah....", options: { A: "Melihat kembali catatan atau gambar.", B: "Mengulang materi dengan berbicara atau mendengarkannya.", C: "Mencoba kembali langkah-langkah atau latihan yang pernah dilakukan." } },
-            { category: "Lingkungan Belajar", text: "Menurut saya, rumah yang mendukung kegiatan belajar adalah...", options: { A: "Memiliki banyak bahan bacaan dan media pembelajaran.", B: "Anggota keluarganya sering berdiskusi dan memberi penjelasan.", C: "Memberikan kesempatan untuk mencoba, berlatih, dan berkarya." } },
-            { category: "Kehidupan Sehari-hari", text: "Saat membuka media sosial, konten yang paling sering membuat Anda berhenti scrolling adalah...", options: { A: "Foto, ilustrasi, atau video yang menarik.", B: "Podcast singkat, cerita, atau voice over yang menarik.", C: "Konten yang mengajak mencoba sesuatu, seperti challenge atau eksperimen sederhana." } },
-            { category: "Kehidupan Sehari-hari", text: "Ketika ingin mencoba membuat minuman yang sedang viral, biasanya saya...", options: { A: "Melihat video atau foto langkah-langkahnya.", B: "Mendengarkan teman menjelaskan caranya.", C: "Langsung mencoba membuatnya sendiri sambil melihat hasilnya." } },
-            { category: "Kehidupan Sehari-hari", text: "Saat berkumpul bersama teman, yang sangat Anda nikmati adalah kegiatan...", options: { A: "Foto-foto atau membuat konten bersama.", B: "Mengobrol, curhat dan bercanda.", C: "Bermain game, olahraga, atau aktivitas yang banyak bergerak." } },
-            { category: "Kehidupan Sehari-hari", text: "Ketika mencari tempat nongkrong atau kafe baru, Anda biasanya...", options: { A: "Melihat foto tempat dan desain interiornya di media sosial.", B: "Mendengarkan rekomendasi dari teman atau influencer.", C: "Datang langsung untuk merasakan suasananya." } },
-            { category: "Kehidupan Sehari-hari", text: "Saat ada tren atau challenge baru di TikTok/Instagram, biasanya Anda...", options: { A: "Melihat video sampai paham langkah-langkahnya.", B: "Mendengarkan penjelasan kreator atau teman tentang cara melakukannya.", C: "Langsung mencoba membuat challenge tersebut." } },
-            { category: "Kehidupan Sehari-hari", text: "Saat teman menceritakan film bioskop yang baru ditontonnya, Anda lebih tertarik jika...", options: { A: "Ditunjukkan cuplikan atau trailernya.", B: "Teman menceritakan alur ceritanya.", C: "Langsung menonton film tersebut sendiri." } },
-            { category: "Kehidupan Sehari-hari", text: "Ketika mendengarkan lagu favorit, hal yang paling membuat Anda menikmatinya adalah...", options: { A: "Video klip atau visual penyanyinya.", B: "Melodi, lirik, atau suara penyanyinya.", C: "Bisa ikut bernyanyi, berjoget, atau memainkan gerakannya." } },
-            { category: "Kehidupan Sehari-hari", text: "Jika teman mengajari Anda menggunakan fitur baru di HP, Anda lebih mudah memahami ketika...", options: { A: "Teman menunjukkan langsung di layar HP.", B: "Teman menjelaskan langkah-langkahnya sambil berbicara.", C: "Anda memegang HP sendiri dan langsung mencobanya." } },
-            { category: "Kehidupan Sehari-hari", text: "Saat tidur akhir pekan tidak ada kegiatan, Anda lebih memilih...", options: { A: "Menonton film, anime, atau scrolling Pinterest dan Instagram.", B: "Mendengarkan musik, podcast, atau ngobrol di Discord/telepon dengan teman.", C: "Melakukan hobi seperti basket, futsal, gym, jalan-jalan, dll." } },
-            { category: "Kehidupan Sehari-hari", text: "Ketika ingin membeli baju atau sepatu baru, biasanya apa yang pertama kali Anda lakukan...", options: { A: "Membandingkan tampilan bahan, warna, dan model baju.", B: "Bertanya kepada pegawai toko untuk mendapatkan rekomendasi yang sesuai.", C: "Langsung mencoba untuk mengetahui ukuran, bahan, dan kenyamanannya." } },
-            { category: "Bahasa Indonesia", text: "Ketika guru menjelaskan pelajaran Bahasa Indonesia, saya lebih mudah memahami jika ...", options: { A: "Guru menjelaskan secara lisan dan memberikan kesempatan untuk bertanya.", B: "Guru menggunakan gambar, video, atau tulisan yang ditampilkan di layar atau papan tulis.", C: "Guru mengajak siswa melakukan kegiatan atau praktik secara langsung." } },
-            { category: "Bahasa Indonesia", text: "Agar lebih tertarik mengikuti pelajaran Bahasa Indonesia, saya lebih menyukai pembelajaran yang ...", options: { A: "Banyak melibatkan diskusi dan tanya jawab.", B: "Menggunakan media pembelajaran yang menarik untuk dilihat.", C: "Melibatkan aktivitas atau permainan pembelajaran." } },
-            { category: "Bahasa Indonesia", text: "Ketika saya mengalami kesulitan memahami pelajaran Bahasa Indonesia, saya lebih suka ...", options: { A: "Meminta penjelasan langsung kepada guru atau teman.", B: "Melihat kembali catatan atau contoh yang diberikan.", C: "Mencoba mengerjakan tugas atau latihan secara langsung." } },
-            { category: "Bahasa Indonesia", text: "Saat bekerja dalam kelompok pada pelajaran Bahasa Indonesia, saya lebih senang ...", options: { A: "Menyampaikan pendapat dan berdiskusi dengan anggota kelompok.", B: "Membuat rangkuman, poster, atau tampilan hasil kerja kelompok.", C: "Melaksanakan tugas yang membutuhkan praktik atau demonstrasi." } },
-            { category: "Bahasa Indonesia", text: "Kegiatan pembelajaran Bahasa Indonesia yang paling membuat saya bersemangat adalah ...", options: { A: "Diskusi dan presentasi di kelas.", B: "Menonton video atau melihat contoh yang menarik.", C: "Melakukan praktik atau kegiatan kelompok." } },
-            { category: "Bahasa Indonesia", text: "Ketika guru memberikan petunjuk tugas Bahasa Indonesia, saya lebih mudah memahami jika ...", options: { A: "Dijelaskan secara lisan langkah demi langkah.", B: "Dituliskan secara jelas dalam bentuk poin-poin atau contoh.", C: "Dicontohkan langsung cara mengerkatkannya." } },
-            { category: "Bahasa Indonesia", text: "Jika diberikan kebebasan memilih cara belajar Bahasa Indonesia, saya akan memilih ...", options: { A: "Mendengarkan penjelasan dan berdiskusi dengan teman.", B: "Membaca materi dan melihat contoh-contoh yang tersedia.", C: "Belajar melalui praktik dan pengalaman langsung." } },
-            { category: "Bahasa Indonesia", text: "Ketika mempersiapkan diri untuk penilaian Bahasa Indonesia, saya biasanya ...", options: { A: "Berdiskusi atau menjelaskan kembali materi kepada teman.", B: "Membaca ulang catatan dan menandai bagian penting.", C: "Berlatih mengerjakan soal atau tugas secara langsung." } },
-            { category: "Bahasa Indonesia", text: "Saya merasa lebih fokus dalam pelajaran Bahasa Indonesia ketika ...", options: { A: "Guru sedang menjelaskan atau memandu diskusi.", B: "Guru menggunakan media visual seperti gambar atau video.", C: "Saya terlibat langsung dalam aktivitas pembelajaran." } },
-            { category: "Bahasa Indonesia", text: "Menurut saya, pembelajaran Bahasa Indonesia yang ideal adalah pembelajaran yang ...", options: { A: "Memberikan banyak kesempatan untuk berbicara, berdiskusi, dan bertanya.", B: "Menggunakan media yang menarik dan mudah dipahami.", C: "Memberikan banyak kesempatan untuk praktik dan bekerja sama dengan teman." } }
-        ];
+            // BAB 1: LATAR BELAKANG (1 - 10)
+            { category: "Latar Belakang", text: "Siapa yang paling sering memberikan semangat belajarmu?", options: { A: "Orang tua sering atau bahkan rutin memberikan motivasi dan perhatian terhadap kegiatan belajar saya.", B: "Kakak atau orang terdekat yang lebih sering memberikan semangat belajar kepada saya.", C: "Saya lebih memotivasi diri sendiri karena keluarga jarang terlibat dalam kegiatan belajar saya." } },
+            { category: "Latar Belakang", text: "Bagaimana keluarga mengetahui perkembangan belajarmu di sekolah?", options: { A: "Orang tua menanyakan nilai, tugas, dan perkembangan belajar saya.", B: "Orang tua sesekali menanyakan perkembangan belajar saya, biasanya pada saat tertentu seperti ujian atau pembagian rapor.", C: "Keluarga jarang atau tidak pernah menanyakan perkembangan belajar saya." } },
+            { category: "Latar Belakang", text: "Ketika mengalami kesulitan dalam memahami materi pelajaran, biasanya saya…", options: { A: "Mendapat pendampingan atau bantuan dari orang tua hingga memahami materi.", B: "Mendapat bantuan dari kakak, anggota keluarga lain, atau mencari bantuan dari tempat les/bimbel.", C: "Belajar sendiri atau menunggu penjelasan dari guru di sekolah." } },
+            { category: "Latar Belakang", text: "Perangkat yang paling sering kamu gunakan untuk belajar adalah…", options: { A: "Laptop/komputer.", B: "Hp (Handphone).", C: "Menggunakan atau meminjam perangkat milik orang lain." } },
+            { category: "Latar Belakang", text: "Saat membutuhkan perangkat untuk belajar, kondisi yang paling sesuai adalah…", options: { A: "Perangkat selalu tersedia kapan pun dibutuhkan.", B: "Perangkat tersedia, tetapi harus bergantian dengan anggota keluarga lain.", C: "Saya sering kesulitan memperoleh perangkat untuk belajar." } },
+            { category: "Latar Belakang", text: "Bagaimana kondisi perangkat yang kamu gunakan untuk belajar?", options: { A: "Berfungsi dengan baik sehingga mendukung kegiatan belajar.", B: "Masih dapat digunakan, tetapi kadang mengalami kendala.", C: "Sering mengalami kerusakan atau tidak dapat digunakan dengan baik." } },
+            { category: "Latar Belakang", text: "Bahasa yang pertama kali kamu pelajari sejak kecil adalah…", options: { A: "Bahasa Indonesia.", B: "Bahasa daerah (Jawa/Madura).", C: "Bahasa lain." } },
+            { category: "Latar Belakang", text: "Bahasa yang paling sering digunakan saat berbicara dengan keluarga adalah…", options: { A: "Sebagian besar menggunakan Bahasa Indonesia.", B: "Menggunakan Bahasa Indonesia dan bahasa daerah secara bergantian.", C: "Sebagian besar menggunakan bahasa daerah (Jawa/Madura)." } },
+            { category: "Latar Belakang", text: "Saat berkomunikasi dengan teman di lingkungan tempat tinggal, kamu biasanya menggunakan…", options: { A: "Bahasa Indonesia.", B: "Bahasa Indonesia dan bahasa daerah.", C: "Bahasa daerah dan bahasa lain." } },
+            { category: "Latar Belakang", text: "Ketika mengikuti pembelajaran di sekolah, Anda merasa paling nyaman…", options: { A: "Menggunakan Bahasa Indonesia sepenuhnya.", B: "Menggunakan bahasa Indonesia, tetapi terkadang memerlukan penjelasan dalam bahasa daerah.", C: "Lebih mudah memahami penjelasan jika menggunakan bahasa daerah." } },
 
-        const scoringMap = [
-            { 'A': 'V', 'B': 'A', 'C': 'K' }, { 'A': 'V', 'B': 'A', 'C': 'K' }, { 'A': 'V', 'B': 'A', 'C': 'K' }, { 'A': 'V', 'B': 'A', 'C': 'K' }, { 'A': 'V', 'B': 'A', 'C': 'K' },
-            { 'A': 'V', 'B': 'A', 'C': 'K' }, { 'A': 'V', 'B': 'A', 'C': 'K' }, { 'A': 'V', 'B': 'A', 'C': 'K' }, { 'A': 'V', 'B': 'A', 'C': 'K' }, { 'A': 'V', 'B': 'A', 'C': 'K' },
-            { 'A': 'V', 'B': 'A', 'C': 'K' }, { 'A': 'V', 'B': 'A', 'C': 'K' }, { 'A': 'V', 'B': 'A', 'C': 'K' }, { 'A': 'V', 'B': 'A', 'C': 'K' }, { 'A': 'V', 'B': 'A', 'C': 'K' },
-            { 'A': 'V', 'B': 'A', 'C': 'K' }, { 'A': 'V', 'B': 'A', 'C': 'K' }, { 'A': 'V', 'B': 'A', 'C': 'K' }, { 'A': 'V', 'B': 'A', 'C': 'K' }, { 'A': 'V', 'B': 'A', 'C': 'K' },
-            // Kategori 3
-            { 'A': 'A', 'B': 'V', 'C': 'K' }, { 'A': 'A', 'B': 'V', 'C': 'K' }, { 'A': 'A', 'B': 'V', 'C': 'K' }, { 'A': 'A', 'B': 'V', 'C': 'K' }, { 'A': 'A', 'B': 'V', 'C': 'K' },
-            { 'A': 'A', 'B': 'V', 'C': 'K' }, { 'A': 'A', 'B': 'V', 'C': 'K' }, { 'A': 'A', 'B': 'V', 'C': 'K' }, { 'A': 'A', 'B': 'V', 'C': 'K' }, { 'A': 'A', 'B': 'V', 'C': 'K' }
+            // BAB 2: TES GAYA BELAJAR (11 - 20)
+            { category: "Gaya Belajar (VAK)", text: "Kalau sedang belajar bersama teman, kamu lebih suka...", options: { A: "Membandingkan catatan atau melihat contoh.", B: "Berdiskusi dan saling menjelaskan.", C: "Praktik, bermain peran, membuat proyek." } },
+            { category: "Gaya Belajar (VAK)", text: "Saat pelajaran berlangsung, kamu paling cepat kehilangan fokus ketika...", options: { A: "Guru hanya berbicara tanpa media.", B: "Harus membaca sendiri tanpa penjelasan.", C: "Hanya membaca tanpa latihan." } },
+            { category: "Gaya Belajar (VAK)", text: "Kalau guru memberi waktu untuk belajar sendiri di kelas, biasanya kamu...", options: { A: "Membaca kembali materi atau melihat catatan.", B: "Mengobrol dengan teman tentang materi.", C: "Mengerjakan latihan atau mencoba tugas." } },
+            { category: "Gaya Belajar (VAK)", text: "Saat belajar sendiri di rumah, kamu merasa kurang nyaman jika...", options: { A: "Catatan atau materi tidak jelas.", B: "Tidak ada orang yang bisa diajak bertanya.", C: "Harus membaca sendiri tanpa penjelasan." } },
+            { category: "Gaya Belajar (VAK)", text: "Saat pelajaran berlangsung selama satu jam, kamu biasanya...", options: { A: "Memperhatikan tulisan di papan atau slide dan mencatat hal penting.", B: "Fokus mendengarkan penjelasan guru dan ikut menjawab pertanyaan.", C: "Saya sulit duduk diam terlalu lama ketika pelajaran berlangsung." } },
+            { category: "Gaya Belajar (VAK)", text: "Ketika ada teman bercerita tentang tempat wisata yang belum pernah kamu kunjungi, kamu lebih mudah membayangkannya jika....", options: { A: "Teman menunjukkan foto atau video tempat tersebut.", B: "Teman menceritakannya secara detail.", C: "Kamu diajak langsung berkunjung ke tempat itu." } },
+            { category: "Gaya Belajar (VAK)", text: "Saat menghafal sesuatu, kamu biasanya...", options: { A: "Membaca berulang kali.", B: "Mengucapkannya berulang-ulang.", C: "Menulis ulang atau mempraktikkannya." } },
+            { category: "Gaya Belajar (VAK)", text: "Kalau mengajari adik atau teman, kamu biasanya...", options: { A: "Menuliskan contoh terlebih dahulu.", B: "Menjelaskan langkah demi langkah.", C: "Mengajak mencoba bersama." } },
+            { category: "Gaya Belajar (VAK)", text: "Kalau diminta presentasi di depan kelas, kamu lebih nyaman...", options: { A: "Menggunakan PPT atau gambar.", B: "Menjelaskan langsung dengan berbicara.", C: "Menunjukkan contoh secara langsung atau demonstrasi." } },
+            { category: "Gaya Belajar (VAK)", text: "Saat kerja kelompok, biasanya kamu memilih peran sebagai...", options: { A: "Membuat poster, PPT, atau rangkuman.", B: "Menjadi penyampai hasil diskusi.", C: "Menunjukkan cara kerja atau praktik." } },
+
+            // BAB 3: BAHASA INDONESIA (21 - 30)
+            { category: "Bahasa Indonesia", text: "Ketika guru menjelaskan materi Bahasa Indonesia, saya lebih mudah memahami jika ....", options: { A: "Guru menjelaskan secara lisan atau melalui audio/video.", B: "Guru memberi kesempatan untuk berdiskusi dan bertanya.", C: "Guru menyediakan bacaan atau contoh teks untuk dipelajari.", D: "Guru meminta saya membuat catatan atau rangkuman materi." } },
+            { category: "Bahasa Indonesia", text: "Jika ada materi baru dalam pelajaran Bahasa Indonesia, saya lebih suka mempelajarinya dengan cara ....", options: { A: "Mendengarkan penjelasan guru terlebih dahulu.", B: "Berdiskusi dengan guru atau teman.", C: "Membaca buku, modul, atau artikel.", D: "Menulis poin-poin penting agar lebih mudah dipahami." } },
+            { category: "Bahasa Indonesia", text: "Ketika belum memahami materi Bahasa Indonesia, saya biasanya memilih untuk ....", options: { A: "Mendengarkan kembali penjelasan guru.", B: "Bertanya atau berdiskusi dengan teman.", C: "Mencari informasi dari buku atau internet.", D: "Membuat rangkuman dengan bahasa saya sendiri." } },
+            { category: "Bahasa Indonesia", text: "Agar lebih memahami materi Bahasa Indonesia, saya lebih senang ....", options: { A: "Menyimak video, podcast, atau penjelasan guru.", B: "Bertukar pendapat melalui diskusi.", C: "Membaca berbagai sumber belajar.", D: "Menulis hasil pemahaman saya dalam bentuk catatan." } },
+            { category: "Bahasa Indonesia", text: "Cara belajar Bahasa Indonesia yang paling menarik bagi saya adalah ....", options: { A: "Mendengarkan cerita, penjelasan, atau rekaman.", B: "Berdiskusi dan menyampaikan pendapat.", C: "Membaca berbagai jenis teks.", D: "Menulis ringkasan, cerita, atau artikel." } },
+            { category: "Bahasa Indonesia", text: "Dalam pembelajaran Bahasa Indonesia, saya merasa lebih aktif ketika ....", options: { A: "Menyimak penjelasan atau cerita yang disampaikan guru.", B: "Menyampaikan pendapat dalam diskusi kelas.", C: "Membaca berbagai bacaan yang berkaitan dengan materi.", D: "Menulis hasil pemikiran atau tugas." } },
+            { category: "Bahasa Indonesia", text: "Saat bekerja dalam kelompok, saya lebih senang jika mendapat tugas untuk ....", options: { A: "Menyimak dan memahami pendapat anggota kelompok.", B: "Menyampaikan hasil diskusi kelompok.", C: "Membaca referensi yang diperlukan kelompok.", D: "Menulis hasil diskusi kelompok." } },
+            { category: "Bahasa Indonesia", text: "Saya merasa lebih percaya diri dalam pelajaran Bahasa Indonesia ketika ....", options: { A: "Mendengarkan penjelasan atau arahan guru.", B: "Menjelaskan hasil pekerjaan di depan kelas.", C: "Membaca berbagai sumber sebelum pembelajaran.", D: "Menulis hasil pekerjaan dengan bahasa saya sendiri." } },
+            { category: "Bahasa Indonesia", text: "Saya paling antusias mengikuti pembelajaran Bahasa Indonesia apabila kegiatan belajar berupa ....", options: { A: "Menyimak cerita, video, atau penjelasan guru.", B: "Presentasi, diskusi, atau debat.", C: "Membaca buku, artikel, atau cerpen.", D: "Menulis puisi, cerpen, artikel, atau laporan." } },
+            { category: "Bahasa Indonesia", text: "Jika diberi kebebasan memilih kegiatan pada pelajaran Bahasa Indonesia, saya akan memilih kegiatan yang lebih banyak melibatkan ....", options: { A: "Menyimak berbagai informasi atau cerita.", B: "Berbicara melalui diskusi atau presentasi.", C: "Membaca berbagai jenis bacaan.", D: "Menulis berbagai jenis teks atau karya." } }
         ];
 
         let studentData = { name: '', class: '' };
         let currentQuestion = 0;
         let answers = Array(30).fill(null);
-        let pieChartInstance = null;
+        let chartGayaInstance = null;
+        let chartBahasaInstance = null;
 
         Chart.register(ChartDataLabels);
 
@@ -328,21 +324,21 @@
                 
                 const card = document.createElement('div');
                 card.onclick = () => selectOption(key);
-                card.className = `p-4 rounded-2xl border-2 cursor-pointer transition-all-300 flex items-center justify-between bg-white/70 hover:bg-white ${
+                card.className = `p-3.5 rounded-2xl border-2 cursor-pointer transition-all-300 flex items-center justify-between bg-white/70 hover:bg-white ${
                     isSelected ? 'border-modernBlue-600 shadow-md ring-2 ring-modernBlue-500/20' : 'border-white/20'
                 }`;
 
                 card.innerHTML = `
                     <div class="flex items-center gap-4">
-                        <span class="w-8 h-8 rounded-xl flex items-center justify-center font-bold text-sm ${
+                        <span class="w-7 h-7 rounded-xl flex items-center justify-center font-bold text-xs ${
                             isSelected ? 'bg-modernBlue-600 text-white' : 'bg-slate-200 text-slate-600'
                         }">${key}</span>
-                        <p class="text-sm md:text-base font-semibold text-slate-800">${optText}</p>
+                        <p class="text-xs md:text-sm font-semibold text-slate-800">${optText}</p>
                     </div>
-                    <div class="w-5 h-5 rounded-full border flex items-center justify-center ${
+                    <div class="w-4 h-4 rounded-full border flex items-center justify-center ${
                         isSelected ? 'bg-modernBlue-600 border-modernBlue-600 text-white' : 'border-slate-400'
                     }">
-                        ${isSelected ? '<i class="fa-solid fa-check text-[10px]"></i>' : ''}
+                        ${isSelected ? '<i class="fa-solid fa-check text-[9px]"></i>' : ''}
                     </div>
                 `;
                 container.appendChild(card);
@@ -359,7 +355,7 @@
             setTimeout(() => {
                 if (currentQuestion < 29) { currentQuestion++; showQuestion(); } 
                 else { finishAssessment(); }
-            }, 250);
+            }, 200);
         }
 
         function prevQuestion() { if (currentQuestion > 0) { currentQuestion--; showQuestion(); } }
@@ -369,84 +365,148 @@
             document.getElementById('quiz-screen').classList.add('hidden');
             document.getElementById('result-screen').classList.remove('hidden');
 
-            let totalV = 0, totalA = 0, totalK = 0;
-            answers.forEach((ans, idx) => {
-                const gaya = scoringMap[idx][ans];
-                if (gaya === 'V') totalV++;
-                if (gaya === 'A') totalA++;
-                if (gaya === 'K') totalK++;
-            });
-
-            const pV = Math.round((totalV / 30) * 100);
-            const pA = Math.round((totalA / 30) * 100);
-            const pK = Math.round((totalK / 30) * 100);
-
             document.getElementById('res-student-name').innerText = `: ${studentData.name}`;
             document.getElementById('res-student-class').innerText = `: Kelas ${studentData.class} SMA`;
             document.getElementById('res-date').innerText = `: ${new Date().toLocaleDateString('id-ID', {year: 'numeric', month: 'long', day: 'numeric'})}`;
 
-            buildAnalysis(totalV, totalA, totalK, pV, pA, pK);
-            renderPieChartWithPercentages(pV, pA, pK);
-        }
-
-        function buildAnalysis(v, a, k, pv, pa, pk) {
-            const arr = [{ id: 'V', type: 'Visual', score: v, pct: pv }, { id: 'A', type: 'Auditori', score: a, pct: pa }, { id: 'K', type: 'Kinestetik', score: k, pct: pk }];
-            arr.sort((x, y) => y.score - x.score);
-
-            let title = "", summary = "", html = "";
-            const isCombo = (arr[0].score - arr[1].score) <= 2;
-
-            if (isCombo) {
-                title = `Kombinasi: ${arr[0].type} - ${arr[1].type}`;
-                summary = `Profil belajar Anda menunjukkan fleksibilitas tinggi yang menyeimbangkan metode ${arr[0].type} dengan metode ${arr[1].type}.`;
-                html = getHtmlFor(arr[0].id) + getHtmlFor(arr[1].id);
-            } else {
-                title = `Dominan: ${arr[0].type}`;
-                summary = `Anda memiliki kecenderungan kuat menyerap informasi menggunakan metode ${arr[0].type}. Manfaatkan strategi ini secara maksimal untuk menghemat energi belajar Anda.`;
-                html = getHtmlFor(arr[0].id);
+            // --- PROSES BAB 1: LATAR BELAKANG ---
+            const bgContainer = document.getElementById('bg-results-list');
+            bgContainer.innerHTML = '';
+            for (let i = 0; i < 10; i++) {
+                const q = questions[i];
+                const ans = answers[i];
+                const textJawaban = q.options[ans];
+                const div = document.createElement('div');
+                div.className = "p-3 bg-white/60 border border-slate-200 rounded-xl space-y-1";
+                div.innerHTML = `<p class="font-bold text-slate-500 text-[10px]">SOAL ${i+1}</p><p class="font-semibold text-slate-800 text-xs">${textJawaban}</p>`;
+                bgContainer.appendChild(div);
             }
 
-            document.getElementById('dominant-title').innerText = title;
-            document.getElementById('dominant-summary').innerText = summary;
-            document.getElementById('analysis-grid').innerHTML = html;
+            // --- PROSES BAB 2: GAYA BELAJAR (VAK) ---
+            let v = 0, a = 0, k = 0;
+            for (let i = 10; i < 20; i++) {
+                if (answers[i] === 'A') v++;
+                if (answers[i] === 'B') a++;
+                if (answers[i] === 'C') k++;
+            }
+            const pV = Math.round((v / 10) * 100);
+            const pA = Math.round((a / 10) * 100);
+            const pK = Math.round((k / 10) * 100);
+
+            let gayaTitle = "";
+            let gayaDescHtml = "";
+            const maxGaya = Math.max(v, a, k);
+            
+            if (v === maxGaya) {
+                gayaTitle = "Dominan Visual (👁️)";
+                gayaDescHtml = `<div class="p-4 bg-blue-50 border border-blue-200 rounded-xl text-xs text-slate-700 leading-relaxed"><strong>Strategi Belajar Eksekutif:</strong> Maksimalkan belajar menggunakan representasi grafis, infografis warna, mind map, dan video ilustrasi. Siswa disarankan duduk di barisan depan agar fokus pandangan terjaga secara optimal tanpa distorsi visual.</div>`;
+            } else if (a === maxGaya) {
+                gayaTitle = "Dominan Auditori (👂)";
+                gayaDescHtml = `<div class="p-4 bg-indigo-50 border border-indigo-200 rounded-xl text-xs text-slate-700 leading-relaxed"><strong>Strategi Belajar Eksekutif:</strong> Sangat optimal menangkap materi lewat paparan ceramah, rekaman suara, diskusi interaktif, serta membaca materi dengan suara lirih (*subvokalisasi*). Hindari lingkungan belajar dengan polusi suara tinggi.</div>`;
+            } else {
+                gayaTitle = "Dominan Kinestetik (🏃)";
+                gayaDescHtml = `<div class="p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-xs text-slate-700 leading-relaxed"><strong>Strategi Belajar Eksekutif:</strong> Sangat dianjurkan menyisipkan aktivitas fisik, manipulasi objek langsung, eksperimen laboratorium, atau metode simulasi peran (*roleplay*). Gunakan teknik belajar dengan jeda berkala untuk peregangan otot motorik.</div>`;
+            }
+            document.getElementById('gaya-title').innerText = `${gayaTitle} (${pV}% V | ${pA}% A | ${pK}% K)`;
+            document.getElementById('gaya-desc').innerHTML = gayaDescHtml;
+            renderGayaChart(pV, pA, pK);
+
+            // --- PROSES BAB 3: BAHASA INDONESIA ---
+            let menyimak = 0, berbicara = 0, membaca = 0, menulis = 0;
+            for (let i = 20; i < 30; i++) {
+                if (answers[i] === 'A') menyimak++;
+                if (answers[i] === 'B') berbicara++;
+                if (answers[i] === 'C') membaca++;
+                if (answers[i] === 'D') menulis++;
+            }
+            const pMenyimak = Math.round((menyimak / 10) * 100);
+            const pBerbicara = Math.round((berbicara / 10) * 100);
+            const pMembaca = Math.round((membaca / 10) * 100);
+            const pMenulis = Math.round((menulis / 10) * 100);
+
+            let bahasaTitle = "";
+            let bahasaDescHtml = "";
+            const maxBahasa = Math.max(menyimak, berbicara, membaca, menulis);
+
+            if (menyimak === maxBahasa) {
+                bahasaTitle = "Minat Utama: Menyimak (🎙️)";
+                bahasaDescHtml = `<div class="p-4 bg-purple-50 border border-purple-200 rounded-xl text-xs text-slate-700 leading-relaxed">Siswa memiliki ketertarikan tinggi menyerap kompetensi literasi melalui mendengarkan intonasi cerita guru, menyimak monolog/dialog instruksional, atau materi berbasis audio kebahasaan.</div>`;
+            } else if (berbicara === maxBahasa) {
+                bahasaTitle = "Minat Utama: Berbicara (🗣️)";
+                bahasaDescHtml = `<div class="p-4 bg-amber-50 border border-amber-200 rounded-xl text-xs text-slate-700 leading-relaxed">Siswa lebih percaya diri mengekspresikan gagasan kebahasaan melalui forum debat aktif, presentasi kelompok, berdiskusi reflektif, atau bercerita secara verbal di depan publik kelas.</div>`;
+            } else if (membaca === maxBahasa) {
+                bahasaTitle = "Minat Utama: Membaca (📖)";
+                bahasaDescHtml = `<div class="p-4 bg-rose-50 border border-rose-200 rounded-xl text-xs text-slate-700 leading-relaxed">Siswa menunjukkan efisiensi pemahaman literatur ketika mendalami jenis teks cerita, artikel ilmiah, cerpen, buku teks independen, atau mengobservasi struktur wacana tertulis.</div>`;
+            } else {
+                bahasaTitle = "Minat Utama: Menulis (✍️)";
+                bahasaDescHtml = `<div class="p-4 bg-teal-50 border border-teal-200 rounded-xl text-xs text-slate-700 leading-relaxed">Siswa sangat potensial dalam merangkum simpulan informasi ke dalam catatan berstruktur pribadi, menuangkan imajinasi menjadi karya sastra teks puisi/cerpen, atau menyusun laporan tulisan.</div>`;
+            }
+            document.getElementById('bahasa-title').innerText = `${bahasaTitle}`;
+            document.getElementById('bahasa-desc').innerHTML = bahasaDescHtml;
+            renderBahasaChart(pMenyimak, pBerbicara, pMembaca, pMenulis);
         }
 
-        function getHtmlFor(id) {
-            if (id === 'V') return `<div class="p-5 bg-blue-50 border border-blue-200 rounded-2xl space-y-2"><h4 class="font-bold text-blue-900 text-sm">👁️ Profil Visual</h4><p class="text-xs text-slate-700 leading-relaxed">Fokus pada visualisasi, rangkuman peta konsep, stabilo berwarna, gambar, dan infografis terstruktur. Hindari belajar di ruangan dengan gangguan pandangan berantakan.</p></div>`;
-            if (id === 'A') return `<div class="p-5 bg-indigo-50 border border-indigo-200 rounded-2xl space-y-2"><h4 class="font-bold text-indigo-900 text-sm">👂 Profil Auditori</h4><p class="text-xs text-slate-700 leading-relaxed">Maksimalkan pembelajaran lewat dengarkan rekaman, diskusi dua arah, dan membaca teks dengan suara lirih. Belajarlah di tempat tenang bebas suara bising.</p></div>`;
-            return `<div class="p-5 bg-emerald-50 border border-emerald-200 rounded-2xl space-y-2"><h4 class="font-bold text-emerald-900 text-sm">🏃 Profil Kinestetik</h4><p class="text-xs text-slate-700 leading-relaxed">Libatkan aktivitas rabaan atau motorik, buat eksperimen mandiri, atau selingi sesi belajar dengan jeda fisik peregangan agar sirkulasi fokus tidak stagnan.</p></div>`;
-        }
-
-        function renderPieChartWithPercentages(v, a, k) {
-            if (pieChartInstance) pieChartInstance.destroy();
-
+        function renderGayaChart(v, a, k) {
+            if (chartGayaInstance) chartGayaInstance.destroy();
+            const ctx = document.getElementById('chartGaya').getContext('2d');
+            
             let offV = 0, offA = 0, offK = 0;
             const maxVal = Math.max(v, a, k);
-            if (maxVal === v) offV = 0.15;
-            else if (maxVal === a) offA = 0.15;
-            else offK = 0.15;
+            if (maxVal === v) offV = 0.12;
+            else if (maxVal === a) offA = 0.12;
+            else offK = 0.12;
 
-            const ctxPie = document.getElementById('pieChart').getContext('2d');
-            pieChartInstance = new Chart(ctxPie, {
+            chartGayaInstance = new Chart(ctx, {
                 type: 'pie',
                 data: {
                     labels: ['Visual', 'Auditori', 'Kinestetik'],
                     datasets: [{
                         data: [v, a, k],
                         backgroundColor: ['#2563eb', '#6366f1', '#10b981'],
-                        borderColor: ['#fff', '#fff', '#fff'],
                         borderWidth: 2,
                         offset: [offV, offA, offK]
                     }]
                 },
                 options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
+                    responsive: true, maintainAspectRatio: false,
                     plugins: {
-                        legend: { position: 'bottom', labels: { font: { family: 'Plus Jakarta Sans', size: 11, weight: 'bold' } } },
+                        legend: { position: 'bottom', labels: { font: { family: 'Plus Jakarta Sans', size: 10, weight: 'bold' } } },
                         datalabels: {
-                            color: '#ffffff',
-                            font: { weight: 'bold', size: 13, family: 'Plus Jakarta Sans' },
+                            color: '#fff', font: { weight: 'bold', size: 11, family: 'Plus Jakarta Sans' },
+                            formatter: (value) => value > 0 ? value + '%' : ''
+                        }
+                    }
+                }
+            });
+        }
+
+        function renderBahasaChart(nyimak, bicara, baca, tulis) {
+            if (chartBahasaInstance) chartBahasaInstance.destroy();
+            const ctx = document.getElementById('chartBahasa').getContext('2d');
+
+            let offsets = [0, 0, 0, 0];
+            const arr = [nyimak, bicara, baca, tulis];
+            const maxVal = Math.max(...arr);
+            const idx = arr.indexOf(maxVal);
+            offsets[idx] = 0.12;
+
+            chartBahasaInstance = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Menyimak', 'Berbicara', 'Membaca', 'Menulis'],
+                    datasets: [{
+                        data: [nyimak, bicara, baca, tulis],
+                        backgroundColor: ['#a855f7', '#f59e0b', '#f43f5e', '#14b8a6'],
+                        borderWidth: 2,
+                        offset: offsets
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { font: { family: 'Plus Jakarta Sans', size: 9, weight: 'bold' } } },
+                        datalabels: {
+                            color: '#fff', font: { weight: 'bold', size: 11, family: 'Plus Jakarta Sans' },
                             formatter: (value) => value > 0 ? value + '%' : ''
                         }
                     }
@@ -455,7 +515,7 @@
         }
 
         function restartAssessment() {
-            if (confirm("Ulangi tes dari awal?")) {
+            if (confirm("Apakah Anda yakin ingin mengulang asesmen dari awal?")) {
                 currentQuestion = 0;
                 answers = Array(30).fill(null);
                 document.getElementById('student-name').value = '';
